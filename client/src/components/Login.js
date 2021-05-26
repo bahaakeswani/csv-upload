@@ -21,15 +21,18 @@ const Login = () => {
     axios
       .post(URL, formData)
       .then((res) => {
-        res.data["code"] === "OK"
-          ? history.push("/upload")
-          : toast({
-              title: "OOPS",
-              description: "User Doesn't Exist",
-              status: "warning",
-              duration: 2100,
-              isClosable: true,
-            });
+        if (res.data["code"] === "OK") {
+          sessionStorage.setItem("Name", res.data["userResponse"]["userName"]);
+          history.push("/upload");
+        } else {
+          toast({
+            title: "OOPS",
+            description: "User Doesn't Exist",
+            status: "warning",
+            duration: 2100,
+            isClosable: true,
+          });
+        }
       })
       .catch((err) => {
         console.log(err);

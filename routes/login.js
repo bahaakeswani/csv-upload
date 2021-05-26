@@ -12,6 +12,7 @@ const LoginUser = (req, res) => {
         if (docs) {
           res.send({
             code: "OK",
+            userResponse: docs,
           });
         } else res.send({ code: "UNREGISTERED" });
       }
