@@ -1,6 +1,7 @@
 import styles from "../styles/nav.module.css";
 import brand from "../images/pills.png";
 import whatsapp from "../images/whatsapp.png";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
   return (
@@ -10,9 +11,13 @@ const Nav = () => {
         <h1 className={styles.title}>Lorem</h1>
       </div>
       <div className={styles.middle}>
-        <p className={styles.texts}>Home</p>
+        <Link style={{ textDecoration: "none", color: "black" }} to={"/"}>
+          <p className={styles.texts}>Home</p>
+        </Link>
         <p className={styles.texts}>Donate</p>
-        <button className={styles.button}>Login</button>
+        <Link to={"/login"}>
+          <button className={styles.button}>Login</button>
+        </Link>
       </div>
       <div className={styles.right}>
         <p>Need Help? Chat With Us</p>
