@@ -17,18 +17,23 @@ const Login = () => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
   const handleSubmit = () => {
-    const URL = "http://localhost/login";
-    axios.get(URL).then((res) => {
-      res.data["code"] === "OK"
-        ? history.push("/upload")
-        : toast({
-            title: "OOPS",
-            description: "User Doesn't Exist",
-            status: "warning",
-            duration: 2100,
-            isClosable: true,
-          });
-    });
+    const URL = "http://localhost:8080/login";
+    axios
+      .post(URL, formData)
+      .then((res) => {
+        res.data["code"] === "OK"
+          ? history.push("/upload")
+          : toast({
+              title: "OOPS",
+              description: "User Doesn't Exist",
+              status: "warning",
+              duration: 2100,
+              isClosable: true,
+            });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <div className={styles.home}>
