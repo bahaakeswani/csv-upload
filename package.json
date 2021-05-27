@@ -5,7 +5,8 @@
   "description": "CSV Uploader",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+        "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "author": "Kevin D Goveas",
   "license": "ISC",
