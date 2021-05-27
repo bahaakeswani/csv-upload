@@ -23,6 +23,10 @@ const Login = () => {
       .then((res) => {
         if (res.data["code"] === "OK") {
           sessionStorage.setItem("Name", res.data["userResponse"]["userName"]);
+          sessionStorage.setItem(
+            "Email",
+            res.data["userResponse"]["userEmail"]
+          );
           history.push("/upload");
         } else {
           toast({

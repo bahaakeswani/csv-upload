@@ -1,9 +1,30 @@
 import styles from "../styles/upload.module.css";
 import { Input } from "@chakra-ui/react";
+import axios from "axios";
+import { useState } from "react";
 
 const Upload = () => {
+  const [myFile, setFile] = useState(null);
   var userName = sessionStorage.getItem("Name");
+  var userEmail = sessionStorage.getItem("Email");
   var date;
+  const handleFile = (event) => {
+    setFile(event.target.files[0]);
+  };
+  const handleUpload = () => {
+    const formData = new FormData();
+    formData.append("myFile", myFile);
+    const config = {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    };
+    formData.append("userEmail", userEmail);
+    const URL = "http://localhost:8080/upload";
+    axios.post(URL, formData, config).then((res) => {
+      console.log(res.data);
+    });
+  };
   return (
     <div className={styles.home}>
       <h1 className={styles.title}>Hi {userName}</h1>
@@ -16,8 +37,12 @@ const Upload = () => {
           w="35%"
           type="file"
           placeholder="Select File From Computer"
+          name="myFile"
+          onChange={handleFile}
         />
-        <button className={styles.button}>Upload</button>
+        <button onClick={handleUpload} className={styles.button}>
+          Upload
+        </button>
       </div>
     </div>
   );

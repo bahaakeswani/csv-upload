@@ -12,12 +12,14 @@ app.use(json());
 
 // Routes Import ==============================================
 import LoginUser from "./routes/login.js";
+import UploadFile from "./routes/fileUpload.js";
 
 // MongoDB Connection =========================================
 MongoConnect();
 
 // Main =======================================================
 app.post("/login", LoginUser);
+app.post("/upload", UploadFile);
 
 // Server =====================================================
 app.get("/", (req, res) => {
