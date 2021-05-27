@@ -43,7 +43,7 @@ const UploadFile = (req, res) => {
     var time = new Date();
     var year = d.getFullYear();
     var month = monthNames[d.getMonth()];
-    var finalDate = `${time.toLocaleString("en-US", {
+    var finalDate = `${time.toLocaleString("en-IN", {
       hour: "numeric",
       hour12: true,
     })} on ${date} ${month} ${year}`;
