@@ -16,6 +16,7 @@ const Upload = () => {
     // const url = "http://localhost:8080/getdate";
     const url = "https://csv-upload-kanae.herokuapp.com/getdate";
     axios.post(url, { userEmail: userEmail }).then((res) => {
+      console.log("TimestampOld: " + res.data["timeStamp"]);
       setTimestamp(res.data["timeStamp"]);
     });
   });
@@ -39,6 +40,7 @@ const Upload = () => {
       console.log(res.data["code"]);
       if (res.data["code"] === "OK") {
         isComplete ? setComplete(false) : setComplete(true);
+        console.log("TimestampNew: " + res.data["timeStamp"]);
         setTimestamp(res.data["timeStamp"]);
       } else if (res.data["code"] === "CONFLICT") {
         toast({
