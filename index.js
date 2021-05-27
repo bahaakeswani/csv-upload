@@ -4,6 +4,7 @@ import cors from "cors";
 import MongoConnect from "./utils/db.js";
 import dotenv from "dotenv";
 import path from "path";
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
 // Setting ====================================================
 const app = express();
