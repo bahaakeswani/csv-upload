@@ -6,11 +6,11 @@ import dotenv from "dotenv";
 import path from "path";
 
 // Setting ====================================================
-app.use(express.static(path.join(__dirname, "client", "build")));
 const app = express();
 dotenv.config();
 app.use(cors());
 app.use(json());
+app.use(express.static(path.join(__dirname, "client", "build")));
 
 // Routes Import ==============================================
 import LoginUser from "./routes/login.js";
