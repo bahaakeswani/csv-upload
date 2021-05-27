@@ -49,14 +49,15 @@ const UploadFile = (req, res) => {
     })} on ${date} ${month} ${year}`;
     //----------------------------------------------------------------
     var parser = parse(
-      { columns: true, delimiter: ";" },
+      { columns: true, delimiter: "," },
       function (err, records) {
         if (err) console.log(err);
 
         if (
-          records[0]?.hasOwnProperty("Product ID") &&
-          records[0]?.hasOwnProperty("Product Name") &&
-          records[0]?.hasOwnProperty("Product Cost")
+          records[0]?.hasOwnProperty("productId") &&
+          records[0]?.hasOwnProperty("productName") &&
+          records[0]?.hasOwnProperty("Cost") &&
+          records[0]?.hasOwnProperty("stockAvailable")
         ) {
           UserModel.findOneAndUpdate(
             { userEmail: email },
