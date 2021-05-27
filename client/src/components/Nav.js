@@ -10,7 +10,7 @@ import { useState } from "react";
 const Nav = () => {
   const [isclick, setClick] = useState(false);
   const userLog = useSelector((state) => state.loginState.value);
-  console.log(userLog);
+  const name = sessionStorage.getItem("Name");
   return (
     <div className={styles.root}>
       <div className={styles.brand}>
@@ -32,7 +32,10 @@ const Nav = () => {
             <button className={styles.button}>Login</button>
           </Link>
         ) : userLog ? (
-          <Avatar src={avatar} />
+          <>
+            <Avatar src={avatar} />
+            <p className={styles.namae}>{name}</p>
+          </>
         ) : null}
       </div>
       <div className={styles.right}>
