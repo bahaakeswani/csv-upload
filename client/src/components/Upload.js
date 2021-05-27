@@ -13,7 +13,8 @@ const Upload = () => {
   const userEmail = sessionStorage.getItem("Email");
 
   useEffect(() => {
-    const url = "http://localhost:8080/getdate";
+    // const url = "http://localhost:8080/getdate";
+    const url = "https://csv-upload-kanae.herokuapp.com/getdate";
     axios.post(url, { userEmail: userEmail }).then((res) => {
       setTimestamp(res.data["timeStamp"]);
     });
@@ -32,7 +33,8 @@ const Upload = () => {
       },
     };
     formData.append("userEmail", userEmail);
-    const URL = "http://localhost:8080/upload";
+    // const URL = "http://localhost:8080/upload";
+    const URL = "https://csv-upload-kanae.herokuapp.com/upload";
     axios.post(URL, formData, config).then((res) => {
       console.log(res.data["code"]);
       if (res.data["code"] === "OK") {
