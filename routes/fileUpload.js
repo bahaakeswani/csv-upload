@@ -1,11 +1,16 @@
 import multer from "multer";
 import UserModel from "../utils/model.js";
 import path from "path";
+import fs from "fs";
+import parse from "csv-parse";
 
+// Setting ==================================================
+let smh;
 const storage = multer.diskStorage({
   destination: "./public/",
   filename: function (req, file, cb) {
-    cb(null, "CSV-" + Date.now() + path.extname(file.originalname));
+    smh = "CSV-" + Date.now() + path.extname(file.originalname);
+    cb(null, smh);
   },
 });
 
@@ -14,6 +19,7 @@ const upload = multer({
   limits: { fileSize: 1000000 },
 }).single("myFile");
 
+// Main ====================================================
 const UploadFile = (req, res) => {
   upload(req, res, () => {
     const upfile = req.file;
@@ -41,17 +47,32 @@ const UploadFile = (req, res) => {
       hour: "numeric",
       hour12: true,
     })} on ${date} ${month} ${year}`;
-
-    UserModel.findOneAndUpdate(
-      { userEmail: email },
-      { $set: { userCSV: upfile, date: finalDate } },
-      { new: true, useFindAndModify: false },
-      (err, doc) => {
-        if (err) {
-          res.send({ code: "ERR" });
-        } else res.send({ code: "OK", timeStamp: finalDate });
+    var parser = parse(
+      { columns: true, delimiter: ";" },
+      function (err, records) {
+        if (err) console.log(err);
+        console.log(records);
+        if (
+          records[0]?.hasOwnProperty("Product ID") &&
+          records[0]?.hasOwnProperty("Product Name") &&
+          records[0]?.hasOwnProperty("Product Cost")
+        ) {
+          UserModel.findOneAndUpdate(
+            { userEmail: email },
+            { $set: { userCSV: upfile, date: finalDate } },
+            { new: true, useFindAndModify: false },
+            (err, doc) => {
+              if (err) {
+                res.send({ code: "ERR" });
+              } else res.send({ code: "OK", timeStamp: finalDate });
+            }
+          );
+        } else {
+          res.send({ code: "CONFLICT" });
+        }
       }
     );
+    fs.createReadStream("./public/" + smh).pipe(parser);
   });
 };
 

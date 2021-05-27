@@ -1,10 +1,11 @@
 import styles from "../styles/upload.module.css";
-import { Input } from "@chakra-ui/react";
+import { Input, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import done from "../images/done.png";
 
 const Upload = () => {
+  const toast = useToast();
   const [myFile, setFile] = useState(null);
   const [isComplete, setComplete] = useState(false);
   const [timeStamp, setTimestamp] = useState("");
@@ -32,9 +33,18 @@ const Upload = () => {
     formData.append("userEmail", userEmail);
     const URL = "http://localhost:8080/upload";
     axios.post(URL, formData, config).then((res) => {
+      console.log(res.data["code"]);
       if (res.data["code"] === "OK") {
         !isComplete ? setComplete(true) : setComplete(false);
         setTimestamp(res.data["timeStamp"]);
+      } else if (res.data["code"] === "CONFLICT") {
+        toast({
+          title: "CSV Merge Conflict",
+          description:
+            "Make Sure your CSV file has the fieldsL Product ID, Product Name & Product Cost",
+          status: "error",
+          isClosable: true,
+        });
       }
     });
   };
