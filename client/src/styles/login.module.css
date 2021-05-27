@@ -1,10 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
-/* font-family: "Gilroy-Bold", sans-serif;
-font-family: "Gilroy-Heavy", sans-serif;
-font-family: "Gilroy-Light", sans-serif;
-font-family: "Gilroy-Medium", sans-serif;
-font-family: "Gilroy-Regular", sans-serif; */
 
 .home {
   width: 100%;
@@ -56,4 +51,35 @@ font-family: "Gilroy-Regular", sans-serif; */
   font-size: 16px;
   border-radius: 0;
   margin-top: 7vh;
+}
+.inp {
+  width: 75%;
+}
+.stack {
+  margin-top: 5vh;
+  width: 100%;
+}
+
+@media only screen and (max-width: 680px) {
+  .home {
+    flex-direction: column;
+    margin-top: 25vh;
+  }
+  .title,
+  .by {
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+  }
+  .stack {
+    width: 100vw;
+    padding: 2%;
+  }
+  .inp {
+    width: 90%;
+  }
+  .left {
+    width: 100vw;
+    padding: 7%;
+  }
 }

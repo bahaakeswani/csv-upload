@@ -52,18 +52,18 @@ const Login = () => {
       <div className={styles.left}>
         <h1 className={styles.title}>User Login</h1>
         <p className={styles.by}>Welcome Back! Please Login to Your Account</p>
-        <Stack width="100%" mt="5vh" spacing={3}>
+        <Stack className={styles.stack} spacing={3}>
           <Input
             onChange={handleFormChange}
             name="userEmail"
-            width="75%"
+            className={styles.inp}
             placeholder="Login ID"
             size="md"
           />
           <Input
             onChange={handleFormChange}
             name="userPassword"
-            w="75%"
+            className={styles.inp}
             type="password"
             placeholder="Password"
             size="md"
@@ -73,7 +73,7 @@ const Login = () => {
           Login
         </button>
       </div>
-      <div>
+      <div className={styles.right}>
         <img className={styles.img} src={image} alt="" />
       </div>
     </div>

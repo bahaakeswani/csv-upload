@@ -67,8 +67,7 @@ const Upload = () => {
         )}
         {!isComplete ? (
           <Input
-            mt="2vh"
-            w="35%"
+            className={styles.inp}
             type="file"
             placeholder="Select File From Computer"
             name="myFile"

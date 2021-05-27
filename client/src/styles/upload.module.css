@@ -60,3 +60,12 @@
   flex-direction: row;
   align-items: center;
 }
+.inp {
+  margin-top: 2vh;
+  width: 35%;
+}
+@media only screen and (max-width: 680px) {
+  .inp {
+    width: 90%;
+  }
+}

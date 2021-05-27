@@ -7,6 +7,7 @@
   align-items: center;
   justify-content: space-between;
 }
+
 /* =============================================== */
 .brand {
   width: 20%;
@@ -67,4 +68,22 @@
 .img2 {
   height: 24px;
   width: 24px;
+}
+
+@media only screen and (max-width: 680px) {
+  .root {
+    flex-direction: column;
+    height: 25vh;
+  }
+  .brand {
+    flex-direction: row;
+    align-items: center;
+    width: 60%;
+  }
+  .middle,
+  .right {
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+  }
 }
