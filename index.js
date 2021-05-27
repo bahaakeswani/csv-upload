@@ -25,7 +25,7 @@ app.post("/getdate", GetDate);
 
 // Server =====================================================
 app.get("/", (req, res) => {
-  res.send("If You See This: Ur server works buddy so remove me please");
+  res.send("If You See This: Ur Server Works ");
 });
 app.listen(process.env.PORT || 8080, () => {
   console.log("Server Connection: ✔");

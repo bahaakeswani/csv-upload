@@ -4,9 +4,13 @@ import { Input, Stack, useToast } from "@chakra-ui/react";
 import { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { loginStateSlice } from "../redux/isLoggedIn";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const toast = useToast();
+  const dispatch = useDispatch();
+  const isLoggedIn = loginStateSlice.actions;
   const history = useHistory();
   const [formData, setFormData] = useState({
     userEmail: "",
@@ -27,6 +31,7 @@ const Login = () => {
             "Email",
             res.data["userResponse"]["userEmail"]
           );
+          dispatch(isLoggedIn.status(true));
           history.push("/upload");
         } else {
           toast({

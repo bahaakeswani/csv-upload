@@ -47,11 +47,12 @@ const UploadFile = (req, res) => {
       hour: "numeric",
       hour12: true,
     })} on ${date} ${month} ${year}`;
+    //----------------------------------------------------------------
     var parser = parse(
       { columns: true, delimiter: ";" },
       function (err, records) {
         if (err) console.log(err);
-        console.log(records);
+
         if (
           records[0]?.hasOwnProperty("Product ID") &&
           records[0]?.hasOwnProperty("Product Name") &&
@@ -72,6 +73,7 @@ const UploadFile = (req, res) => {
         }
       }
     );
+    //------------------------------------
     fs.createReadStream("./public/" + smh).pipe(parser);
   });
 };
