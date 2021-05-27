@@ -69,6 +69,11 @@ const Upload = () => {
         )}
         {!isComplete ? (
           <Input
+            borderStyle="solid"
+            borderWidth="1.7px"
+            borderRadius="none"
+            borderColor="grey"
+            width="55%"
             className={styles.inp}
             type="file"
             placeholder="Select File From Computer"

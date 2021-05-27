@@ -53,21 +53,33 @@ const Login = () => {
       <div className={styles.left}>
         <h1 className={styles.title}>User Login</h1>
         <p className={styles.by}>Welcome Back! Please Login to Your Account</p>
-        <Stack className={styles.stack} spacing={3}>
+        <Stack className={styles.stack} spacing={0}>
           <Input
             onChange={handleFormChange}
             name="userEmail"
+            width="95%"
             className={styles.inp}
             placeholder="Login ID"
             size="md"
+            borderStyle="solid"
+            borderWidth="1.7px"
+            borderColor="grey"
+            borderRadius="none"
+            mb="0"
           />
           <Input
+            width="95%"
+            mt="0"
+            borderRadius="none"
             onChange={handleFormChange}
             name="userPassword"
             className={styles.inp}
             type="password"
             placeholder="Password"
             size="md"
+            borderStyle="solid"
+            borderWidth="1.7px"
+            borderColor="grey"
           />
         </Stack>
         <button onClick={handleSubmit} className={styles.button}>

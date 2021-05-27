@@ -54,6 +54,9 @@
 }
 .inp {
   width: 75%;
+  border-style: solid;
+  border-width: medium;
+  border-color: black;
 }
 .stack {
   margin-top: 5vh;
