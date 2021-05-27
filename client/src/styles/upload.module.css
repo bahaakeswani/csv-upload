@@ -47,3 +47,16 @@
   border-radius: 0;
   margin-top: 7vh;
 }
+
+.done {
+  height: 53px;
+  width: 53px;
+}
+.doneuploadtitle {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

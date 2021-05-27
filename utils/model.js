@@ -6,10 +6,7 @@ const UserModel = new Schema({
   userEmail: { type: String },
   userPassword: { type: String },
   userCSV: {},
-  date: {
-    type: Date,
-    default: Date(),
-  },
+  date: { type: String },
 });
 
 export default mongoose.model("registered_users", UserModel);

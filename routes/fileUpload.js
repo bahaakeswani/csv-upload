@@ -18,14 +18,38 @@ const UploadFile = (req, res) => {
   upload(req, res, () => {
     const upfile = req.file;
     const email = req.body.userEmail;
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    const d = new Date();
+    var date = d.getDate();
+    var time = new Date();
+    var year = d.getFullYear();
+    var month = monthNames[d.getMonth()];
+    var finalDate = `${time.toLocaleString("en-US", {
+      hour: "numeric",
+      hour12: true,
+    })} on ${date} ${month} ${year}`;
+
     UserModel.findOneAndUpdate(
-      { userEmail: req.body.userEmail },
-      { $set: { userCSV: upfile, date: Date() } },
+      { userEmail: email },
+      { $set: { userCSV: upfile, date: finalDate } },
       { new: true, useFindAndModify: false },
       (err, doc) => {
         if (err) {
           res.send({ code: "ERR" });
-        } else res.send({ code: "OK", timeStamp: Date() });
+        } else res.send({ code: "OK", timeStamp: finalDate });
       }
     );
   });
