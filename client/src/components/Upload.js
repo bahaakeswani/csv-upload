@@ -22,6 +22,7 @@ const Upload = () => {
   const handleFile = (event) => {
     setFile(event.target.files[0]);
   };
+
   const handleUpload = () => {
     const formData = new FormData();
     formData.append("myFile", myFile);
@@ -35,13 +36,13 @@ const Upload = () => {
     axios.post(URL, formData, config).then((res) => {
       console.log(res.data["code"]);
       if (res.data["code"] === "OK") {
-        !isComplete ? setComplete(true) : setComplete(false);
+        isComplete ? setComplete(false) : setComplete(true);
         setTimestamp(res.data["timeStamp"]);
       } else if (res.data["code"] === "CONFLICT") {
         toast({
           title: "CSV Merge Conflict",
           description:
-            "Make Sure your CSV file has the fieldsL Product ID, Product Name & Product Cost",
+            "Make Sure your CSV file has the fields: Product ID, Product Name & Product Cost",
           status: "error",
           isClosable: true,
         });
