@@ -1,10 +1,11 @@
 import styles from "../styles/nav.module.css";
-import brand from "../images/pills.png";
-import { Avatar } from "@chakra-ui/react";
 import whatsapp from "../images/whatsapp.png";
+import { Avatar } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
+import avatar from "../images/avatar.png";
+import brand from "../images/pills.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { useSelector } from "react-redux";
 
 const Nav = () => {
   const [isclick, setClick] = useState(false);
@@ -31,7 +32,7 @@ const Nav = () => {
             <button className={styles.button}>Login</button>
           </Link>
         ) : userLog ? (
-          <Avatar src="https://bit.ly/code-beast" />
+          <Avatar src={avatar} />
         ) : null}
       </div>
       <div className={styles.right}>

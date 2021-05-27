@@ -1,8 +1,8 @@
-import multer from "multer";
 import UserModel from "../utils/model.js";
+import parse from "csv-parse";
+import multer from "multer";
 import path from "path";
 import fs from "fs";
-import parse from "csv-parse";
 
 // Setting ==================================================
 let smh;

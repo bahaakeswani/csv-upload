@@ -1,8 +1,8 @@
-import styles from "../styles/upload.module.css";
 import { Input, useToast } from "@chakra-ui/react";
-import axios from "axios";
+import styles from "../styles/upload.module.css";
 import { useEffect, useState } from "react";
 import done from "../images/done.png";
+import axios from "axios";
 
 const Upload = () => {
   const toast = useToast();
