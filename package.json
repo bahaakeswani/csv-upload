@@ -4,6 +4,10 @@
   "version": "1.0.0",
   "description": "CSV Uploader",
   "main": "index.js",
+  "engines": {
+    "node": "16.x",
+    "npm": "7.x"
+  },
   "scripts": {
     "start": "node index.js",
         "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
